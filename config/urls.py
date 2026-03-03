@@ -15,8 +15,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+# Importamos las vistas que ya tenías
+from core.views import busqueda_vulnerable
+from core.views import update_email_vulnerable
+# NUEVO: Importamos la vista para el ejercicio de IDOR
+from core.views import ver_incidente
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Añade esta línea para activar el Login:
+    path('accounts/', include('django.contrib.auth.urls')),
+    
+    # Vistas de ejercicios anteriores
+    path('buscar/', busqueda_vulnerable),
+    path('update-email/', update_email_vulnerable),
+
+    # NUEVO: URL para ver detalles de incidente (Vulnerable a IDOR)
+    # <int:id> captura el número que pongas en la URL y se lo pasa a la vista
+    path('incidente/<int:id>/', ver_incidente),
 ]

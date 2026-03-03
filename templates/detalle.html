@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle Incidente</title>
+</head>
+<body>
+    <h1>Detalle del Incidente {{ incidente.id }}</h1>
+    
+    <p><strong>Título:</strong> {{ incidente.title | safe }}</p>
+    
+    <p><strong>Severidad:</strong> {{ incidente.severity }}</p>
+    <p><strong>Creado por (ID):</strong> {{ incidente.creator.id }}</p>
+    <a href="/accounts/login/">Volver</a>
+</body>
+</html>

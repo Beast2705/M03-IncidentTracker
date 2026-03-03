@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscador Vulnerable</title>
+</head>
+<body>
+    <h2>Buscador de Incidentes</h2>
+    <form method="GET">
+        <input type="text" name="q" placeholder="Buscar incidente...">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <hr>
+    <h3>Resultados:</h3>
+    <ul>
+        {% for incidente in incidents %}
+            <li>
+                <strong>ID:</strong> {{ incidente.id }} - 
+                <strong>Título:</strong> {{ incidente.title }} 
+                (Creador ID: {{ incidente.creator_id }})
+            </li>
+        {% empty %}
+            <li>No hay resultados.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

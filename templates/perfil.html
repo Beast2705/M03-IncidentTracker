@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Perfil Usuario</title></head>
+<body>
+    <h2>Actualizar Email</h2>
+    {% if mensaje %}<p style="color:green">{{ mensaje }}</p>{% endif %}
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label>Nuevo Email:</label>
+        <input type="text" name="email" style="width: 400px;">
+        <button type="submit">Actualizar</button>
+    </form>
+</body>
+</html>
