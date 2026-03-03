@@ -4,6 +4,7 @@ Django settings for config project.
 
 from pathlib import Path
 import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,6 +78,13 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+# --- AÑADIDO: Usar SQLite en lugar de Postgres al pasar los tests en Jenkins/GitHub Actions ---
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 
 
 # Password validation
